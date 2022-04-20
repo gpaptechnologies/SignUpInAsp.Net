@@ -1,0 +1,66 @@
+USE [DEMO]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Insert_UserMasterData]    Script Date: 12-10-2020 23:09:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[USP_Insert_UserMasterData]
+(
+@FirstName nvarchar(50),
+@LastName nvarchar(50),
+@MobileNumber nvarchar(10),
+@Gender nvarchar(50),
+@Address nvarchar(250),
+@UserName nvarchar(50),
+@Password nvarchar(50),
+@message  nvarchar(50) output
+)
+as
+begin
+
+begin try
+
+declare @ExistingUserCount int = 0
+set @ExistingUserCount = (select count(*) from dbo.UserMaster where UserName = @UserName)
+
+if(@ExistingUserCount > 0)
+	begin
+		set @message = 'User name already exists. Please try with another user name.'
+	end
+else
+	begin
+		insert into dbo.UserMaster(FirstName,LastName,MobileNumber,Gender,Address,UserName,Password)
+		values(@FirstName,@LastName,@MobileNumber,@Gender,@Address,@UserName,@Password)
+
+		set @message = 'User created successfully.'
+	end
+
+end try
+	begin catch
+		set @message = ERROR_MESSAGE()
+	end catch
+
+end
+GO
+/****** Object:  Table [dbo].[UserMaster]    Script Date: 12-10-2020 23:09:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserMaster](
+	[UserMasterID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NULL,
+	[MobileNumber] [nvarchar](10) NOT NULL,
+	[Address] [nvarchar](250) NULL,
+	[UserName] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](50) NOT NULL,
+	[Gender] [nvarchar](50) NULL,
+ CONSTRAINT [PK_UserMaster] PRIMARY KEY CLUSTERED 
+(
+	[UserMasterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

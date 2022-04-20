@@ -1,0 +1,6 @@
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\obj\Debug\SignUp.csprojResolveAssemblyReference.cache
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\bin\SignUp.dll.config
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\bin\SignUp.dll
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\bin\SignUp.pdb
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\obj\Debug\SignUp.dll
+C:\Users\Training\Documents\Training Projects\SignUp\SignUp\obj\Debug\SignUp.pdb

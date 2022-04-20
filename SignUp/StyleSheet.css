@@ -1,0 +1,12 @@
+﻿.txtBox {
+    font-family: Arial, Sans-Serif;    
+    border-collapse: collapse;
+    border-width: 0px;
+    border-color: gray;    
+    padding: 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
